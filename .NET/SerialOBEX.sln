@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33214.272
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialOppClient", "Client\SerialOppClient.csproj", "{D88C094C-4498-4DCA-85FA-F718D02CCEB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialOppServer", "Server\SerialOppServer.csproj", "{3ABDAF64-D7F1-4B39-A24E-801C94D8C9E6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D88C094C-4498-4DCA-85FA-F718D02CCEB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D88C094C-4498-4DCA-85FA-F718D02CCEB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D88C094C-4498-4DCA-85FA-F718D02CCEB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D88C094C-4498-4DCA-85FA-F718D02CCEB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3ABDAF64-D7F1-4B39-A24E-801C94D8C9E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3ABDAF64-D7F1-4B39-A24E-801C94D8C9E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3ABDAF64-D7F1-4B39-A24E-801C94D8C9E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3ABDAF64-D7F1-4B39-A24E-801C94D8C9E6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1EB3CF0B-60C6-42E5-A07D-7FCE472298F5}
+	EndGlobalSection
+EndGlobal
