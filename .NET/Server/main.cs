@@ -119,7 +119,17 @@ namespace SerialOppServer
             if (Error != wclErrors.WCL_E_SUCCESS)
                 Trace("Connect failed", Error);
             else
+            {
                 Trace("Connected");
+
+                wclSerialConfig Config;
+                if (FClient.GetConfig(out Config) == wclErrors.WCL_E_SUCCESS)
+                {
+                    Config.BaudRate = 115200;
+                    Config.ByteSize = 8;
+                    FClient.SetConfig(Config);
+                }
+            }
         }
 
         private void MonitorRemoved(object Sender, wclSerialDevice Device)

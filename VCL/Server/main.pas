@@ -170,11 +170,21 @@ end;
 
 procedure TfmMain.wclSerialClientConnect(Sender: TObject;
   const Error: Integer);
+var
+  Config: TwclSerialConfig;
 begin
   if Error <> WCL_E_SUCCESS then
     Trace('Connect failed', Error)
-  else
+
+  else begin
     Trace('Connected');
+    
+    if wclSerialClient.GetConfig(Config) = WCL_E_SUCCESS then begin
+      Config.BaudRate := 115200;
+      Config.ByteSize := 8;
+      wclSerialClient.SetConfig(Config);
+    end;
+  end;
 end;
 
 procedure TfmMain.wclSerialClientDisconnect(Sender: TObject;
