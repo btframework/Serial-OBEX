@@ -49,7 +49,7 @@ namespace SerialOppServer
         {
             if (FOppServer == null)
             {
-                FOppServer = new wclObexOppServer(null, 0x00FF);
+                FOppServer = new wclObexOppServer(null);
                 FOppServer.OnWrite += OppWrite;
                 FOppServer.OnConnect += OppConnect;
                 FOppServer.OnDisconnected += OppDisconnected;
@@ -100,7 +100,7 @@ namespace SerialOppServer
         private void OppConnect(object Sender, string Description)
         {
             Trace("OBEX client connected [" + Description + "]");
-            FOppServer.Accept("Accept connection");
+            FOppServer.Accept("Accept connection", 0x00FF);
         }
 
         private void ClientDisconnect(object Sender, int Reason)

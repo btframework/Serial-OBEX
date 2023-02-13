@@ -202,7 +202,7 @@ procedure TfmMain.wclSerialClientCreateProcessor(Sender: TObject;
   const Connection: TwclClientDataConnection);
 begin
   if FOppServer = nil then begin
-    FOppServer := TwclObexOppServer.Create(nil, $00FF);
+    FOppServer := TwclObexOppServer.Create(nil);
     FOppServer.OnWrite := OppWrite;
     FOppServer.OnConnect := OppConnect;
     FOppServer.OnDisconnected := OppDisconnect;
@@ -215,7 +215,7 @@ end;
 procedure TfmMain.OppConnect(Sender: TObject; const Description: string);
 begin
   Trace('OBEX client connected [' + Description + ']');
-  FOppServer.Accept('Accept connection');
+  FOppServer.Accept('Accept connection', $00FF);
 end;
 
 procedure TfmMain.OppDisconnect(Sender: TObject; const Reason: Integer;

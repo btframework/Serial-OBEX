@@ -201,7 +201,7 @@ procedure TfmMain.wclSerialClientCreateProcessor(Sender: TObject;
 var
   Proc: TwclObexOppClient;
 begin
-  Proc := TwclObexOppClient.Create(Connection, $00FF);
+  Proc := TwclObexOppClient.Create(Connection);
   Proc.OnConnect := OppConnect;
   Proc.OnDisconnect := OppDisconnect;
   Proc.OnProgress := OppProgress;
@@ -240,7 +240,7 @@ begin
     ShowMessage('Port not connected')
 
   else begin
-    Res := TwclObexOppClient(wclSerialClient.Processor).Connect;
+    Res := TwclObexOppClient(wclSerialClient.Processor).Connect($00FF);
     if Res <> WCL_E_SUCCESS then
       ShowMessage('OBEX connect failed: 0x' + IntToHex(Res, 8));
   end;

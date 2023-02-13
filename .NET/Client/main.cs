@@ -45,7 +45,7 @@ namespace SerialOppClient
 
         private void ClientCreateProcessor(object Sender, wclClientDataConnection Connection)
         {
-            wclObexOppClient Proc = new wclObexOppClient(Connection, 0x00FF);
+            wclObexOppClient Proc = new wclObexOppClient(Connection);
             Proc.OnConnect += OppConnect;
             Proc.OnDisconnect += OppDisconnect;
             Proc.OnProgress += OppProgress;
@@ -193,7 +193,7 @@ namespace SerialOppClient
                 MessageBox.Show("Port not connected");
             else
             {
-                Int32 Res = ((wclObexOppClient)FClient.Processor).Connect();
+                Int32 Res = ((wclObexOppClient)FClient.Processor).Connect(0x00FF);
                 if (Res != wclErrors.WCL_E_SUCCESS)
                     MessageBox.Show("OBEX connect failed: 0x" + Res.ToString("X8"));
             }
