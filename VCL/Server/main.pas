@@ -202,7 +202,7 @@ procedure TfmMain.wclSerialClientCreateProcessor(Sender: TObject;
   const Connection: TwclClientDataConnection);
 begin
   if FOppServer = nil then begin
-    FOppServer := TwclObexOppServer.Create(nil);
+    FOppServer := TwclObexOppServer.Create(nil, $00FF);
     FOppServer.OnWrite := OppWrite;
     FOppServer.OnConnect := OppConnect;
     FOppServer.OnDisconnected := OppDisconnect;

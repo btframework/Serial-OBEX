@@ -49,7 +49,7 @@ namespace SerialOppServer
         {
             if (FOppServer == null)
             {
-                FOppServer = new wclObexOppServer(null);
+                FOppServer = new wclObexOppServer(null, 0x00FF);
                 FOppServer.OnWrite += OppWrite;
                 FOppServer.OnConnect += OppConnect;
                 FOppServer.OnDisconnected += OppDisconnected;

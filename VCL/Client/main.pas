@@ -201,7 +201,7 @@ procedure TfmMain.wclSerialClientCreateProcessor(Sender: TObject;
 var
   Proc: TwclObexOppClient;
 begin
-  Proc := TwclObexOppClient.Create(Connection);
+  Proc := TwclObexOppClient.Create(Connection, $00FF);
   Proc.OnConnect := OppConnect;
   Proc.OnDisconnect := OppDisconnect;
   Proc.OnProgress := OppProgress;

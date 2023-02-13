@@ -45,7 +45,7 @@ namespace SerialOppClient
 
         private void ClientCreateProcessor(object Sender, wclClientDataConnection Connection)
         {
-            wclObexOppClient Proc = new wclObexOppClient(Connection);
+            wclObexOppClient Proc = new wclObexOppClient(Connection, 0x00FF);
             Proc.OnConnect += OppConnect;
             Proc.OnDisconnect += OppDisconnect;
             Proc.OnProgress += OppProgress;
