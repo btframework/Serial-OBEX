@@ -181,7 +181,7 @@ void CSerialOppServerDlg::OnBnClickedButtonConnect()
 	{
 		CString Sel;
 		cbPorts.GetLBText(cbPorts.GetCurSel(), Sel);
-		wclSerialClient.SetDeviceName(Sel.GetBuffer());
+		wclSerialClient.DeviceName = Sel.GetBuffer();
 		int Res = wclSerialClient.Connect();
 		if (Res != WCL_E_SUCCESS)
 			AfxMessageBox(_T("Connect failed: 0x") + IntToHex(Res));

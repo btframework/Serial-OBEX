@@ -185,7 +185,7 @@ void CSerialOppClientDlg::OnBnClickedButtonConnect()
 	{
 		CString Sel;
 		cbPorts.GetLBText(cbPorts.GetCurSel(), Sel);
-		wclSerialClient.SetDeviceName(Sel.GetBuffer());
+		wclSerialClient.DeviceName = Sel.GetBuffer();
 		int Res = wclSerialClient.Connect();
 		if (Res != WCL_E_SUCCESS)
 			AfxMessageBox(_T("Connect failed: 0x") + IntToHex(Res));
@@ -235,7 +235,7 @@ void CSerialOppClientDlg::SerialClientCreateProcessor(void* Sender,
 void CSerialOppClientDlg::SerialClientDestroyProcessor(void* Sender,
 	CwclClientDataConnection* const Connection)
 {
-	CwclObexOppClient* Proc = (CwclObexOppClient*)Connection->GetProcessor();
+	CwclObexOppClient* Proc = (CwclObexOppClient*)Connection->Processor;
 	if (Proc != NULL)
 	{
 		__unhook(Proc);
@@ -278,11 +278,11 @@ void CSerialOppClientDlg::OppPutComplete(void* Sender, const int Error,
 
 void CSerialOppClientDlg::OnBnClickedButtonObexConnect()
 {
-	if (wclSerialClient.GetProcessor() == NULL)
+	if (wclSerialClient.Processor == NULL)
 		AfxMessageBox(_T("Port not connected"));
 	else
 	{
-		int Res = ((CwclObexOppClient*)wclSerialClient.GetProcessor())->Connect(0x00FF);
+		int Res = ((CwclObexOppClient*)wclSerialClient.Processor)->Connect(0x00FF);
 		if (Res != WCL_E_SUCCESS)
 			AfxMessageBox(_T("OBEX connect failed: 0x") + IntToHex(Res));
 	}
@@ -290,11 +290,11 @@ void CSerialOppClientDlg::OnBnClickedButtonObexConnect()
 
 void CSerialOppClientDlg::OnBnClickedButtonObexDisconnect()
 {
-	if (wclSerialClient.GetProcessor() == NULL)
+	if (wclSerialClient.Processor == NULL)
 		AfxMessageBox(_T("OBEX not connected"));
 	else
 	{
-		int Res = ((CwclObexOppClient*)wclSerialClient.GetProcessor())->Disconnect(_T("Disconnect by user"));
+		int Res = ((CwclObexOppClient*)wclSerialClient.Processor)->Disconnect(_T("Disconnect by user"));
 		if (Res != WCL_E_SUCCESS)
 			AfxMessageBox(_T("OBEX disconnect failed: 0x") + IntToHex(Res));
 	}
@@ -308,7 +308,7 @@ void CSerialOppClientDlg::OnBnClickedButtonSendFile()
 		AfxMessageBox(_T("Select file"));
 	else
 	{
-		if (wclSerialClient.GetProcessor() == NULL)
+		if (wclSerialClient.Processor == NULL)
 			AfxMessageBox(_T("Not connected"));
 		else
 		{
@@ -318,7 +318,7 @@ void CSerialOppClientDlg::OnBnClickedButtonSendFile()
 			size_t last_slash_idx = FileName.find_last_of(_T("\\/"));
 			if (tstring::npos != last_slash_idx)
 				FileName.erase(0, last_slash_idx + 1);
-			int Res = ((CwclObexOppClient*)wclSerialClient.GetProcessor())->Put(FileName,
+			int Res = ((CwclObexOppClient*)wclSerialClient.Processor)->Put(FileName,
 				_T("Serial OPP"), Stream);
 			if (Res != WCL_E_SUCCESS)
 			{
